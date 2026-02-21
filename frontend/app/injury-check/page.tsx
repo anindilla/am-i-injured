@@ -8,7 +8,9 @@ import {
   ONSET_TIMING,
 } from "@/lib/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// When empty, use same-origin Next.js API route (works on Vercel without Django)
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "";
+const ANALYZE_URL = API_BASE ? `${API_BASE.replace(/\/$/, "")}/api/analyze/` : "/api/analyze";
 
 const initialForm: InjuryInput = {
   pain_location: "",
@@ -43,7 +45,7 @@ export default function InjuryCheckPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${API_URL}/api/analyze/`, {
+      const res = await fetch(ANALYZE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
