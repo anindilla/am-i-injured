@@ -83,7 +83,7 @@ export default function InjuryCheckPage() {
 
   if (result) {
     return (
-      <div className="min-h-screen bg-gradient-page px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+      <div className="bg-gradient-page px-4 py-6 sm:px-6 sm:py-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <ResultsCard data={result} onReset={reset} />
           <Disclaimer />
@@ -93,7 +93,7 @@ export default function InjuryCheckPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-page px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+    <div className="bg-gradient-page px-4 py-6 sm:px-6 sm:py-6 lg:px-8">
       <div className="bg-gradient-card mx-auto max-w-xl rounded-2xl border border-white/30 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
         <h1 className="text-2xl font-semibold text-stone-800 dark:text-stone-100 sm:text-3xl">
           Am I Injured?
@@ -436,7 +436,7 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
 
 function Disclaimer() {
   return (
-    <p className="mt-8 pb-8 text-center text-sm text-white">
+    <p className="mt-4 pb-2 text-center text-sm text-white">
       This tool does not replace medical advice. If symptoms worsen, seek
       professional care.
     </p>
