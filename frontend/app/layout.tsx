@@ -25,8 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jakarta.variable} flex min-h-screen flex-col font-sans antialiased`}>
-        <main className="flex-1">{children}</main>
+      <body className={`${jakarta.variable} min-h-screen font-sans antialiased`}>
+        <main className="min-h-screen pb-14">{children}</main>
         <Footer />
       </body>
     </html>
