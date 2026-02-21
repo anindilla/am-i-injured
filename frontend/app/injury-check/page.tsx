@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ClipboardList, ChevronRight, Shield, ListTodo, Ban, Eye } from "lucide-react";
 import type { InjuryInput, AnalyzeResponse } from "@/lib/types";
 import {
   PAIN_LOCATIONS,
@@ -95,9 +96,12 @@ export default function InjuryCheckPage() {
   return (
     <div className="bg-gradient-page px-4 py-6 sm:px-6 sm:py-6 lg:px-8">
       <div className="bg-gradient-card mx-auto max-w-xl rounded-2xl border border-white/30 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
-        <h1 className="text-2xl font-semibold text-stone-800 dark:text-stone-100 sm:text-3xl">
-          Am I Injured?
-        </h1>
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-6 w-6 text-violet-600 dark:text-violet-400" strokeWidth={2} aria-hidden />
+          <h1 className="text-2xl font-semibold text-stone-800 dark:text-stone-100 sm:text-3xl">
+            Am I Injured?
+          </h1>
+        </div>
         <p className="mt-1 text-sm text-stone-600 dark:text-stone-300 sm:text-base">
           Quick check: soreness vs. strain vs. something to get looked at.
         </p>
@@ -174,9 +178,10 @@ export default function InjuryCheckPage() {
                 type="button"
                 onClick={() => setStep(2)}
                 disabled={!canProceedStep1}
-                className="bg-gradient-cta min-h-[44px] rounded-xl px-5 py-2.5 font-semibold text-white shadow-md disabled:opacity-50"
+                className="bg-gradient-cta inline-flex min-h-[44px] items-center gap-1 rounded-xl px-5 py-2.5 font-semibold text-white shadow-md disabled:opacity-50"
               >
                 Next
+                <ChevronRight className="h-4 w-4" strokeWidth={2.5} aria-hidden />
               </button>
             </div>
           </div>
@@ -244,9 +249,10 @@ export default function InjuryCheckPage() {
               <button
                 type="button"
                 onClick={() => setStep(3)}
-                className="bg-gradient-cta min-h-[44px] rounded-xl px-5 py-2.5 font-semibold text-white shadow-md"
+                className="bg-gradient-cta inline-flex min-h-[44px] items-center gap-1 rounded-xl px-5 py-2.5 font-semibold text-white shadow-md"
               >
                 Next
+                <ChevronRight className="h-4 w-4" strokeWidth={2.5} aria-hidden />
               </button>
             </div>
           </div>
@@ -288,9 +294,10 @@ export default function InjuryCheckPage() {
                 type="button"
                 onClick={submit}
                 disabled={!canProceedStep3 || loading}
-                className="bg-gradient-cta min-h-[44px] rounded-xl px-5 py-2.5 font-semibold text-white shadow-md disabled:opacity-50"
+                className="bg-gradient-cta inline-flex min-h-[44px] items-center gap-1 rounded-xl px-5 py-2.5 font-semibold text-white shadow-md disabled:opacity-50"
               >
                 {loading ? "Checking…" : "See Result"}
+                <ChevronRight className="h-4 w-4" strokeWidth={2.5} aria-hidden />
               </button>
             </div>
           </div>
@@ -323,7 +330,8 @@ function ResultsCard({
       className={`bg-gradient-card rounded-2xl border-2 p-6 shadow-xl backdrop-blur-xl sm:p-8 ${riskBorder[data.risk_level]}`}
     >
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-100">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-stone-800 dark:text-stone-100">
+          <Shield className="h-5 w-5 text-violet-600 dark:text-violet-400" strokeWidth={2} aria-hidden />
           Your Result
         </h2>
         <button
@@ -357,7 +365,8 @@ function ResultsCard({
       </div>
 
       <div className="mt-6">
-        <h3 className="text-sm font-semibold text-stone-700 dark:text-stone-200">
+        <h3 className="flex items-center gap-1.5 text-sm font-semibold text-stone-700 dark:text-stone-200">
+          <ListTodo className="h-4 w-4 text-emerald-600 dark:text-emerald-400" strokeWidth={2} aria-hidden />
           What to Do Today
         </h3>
         <ul className="mt-2 list-inside list-disc space-y-1 text-stone-700 dark:text-stone-300">
@@ -368,7 +377,8 @@ function ResultsCard({
       </div>
 
       <div className="mt-4">
-        <h3 className="text-sm font-semibold text-stone-700 dark:text-stone-200">
+        <h3 className="flex items-center gap-1.5 text-sm font-semibold text-stone-700 dark:text-stone-200">
+          <Ban className="h-4 w-4 text-amber-600 dark:text-amber-400" strokeWidth={2} aria-hidden />
           What Not to Do
         </h3>
         <ul className="mt-2 list-inside list-disc space-y-1 text-stone-600 dark:text-stone-400">
@@ -394,7 +404,8 @@ function ResultsCard({
       </div>
 
       <div className="mt-4">
-        <h3 className="text-sm font-semibold text-stone-700 dark:text-stone-200">
+        <h3 className="flex items-center gap-1.5 text-sm font-semibold text-stone-700 dark:text-stone-200">
+          <Eye className="h-4 w-4 text-stone-500 dark:text-stone-400" strokeWidth={2} aria-hidden />
           48-Hour Monitoring
         </h3>
         <ul className="mt-2 list-inside list-disc space-y-1 text-stone-600 dark:text-stone-400">
