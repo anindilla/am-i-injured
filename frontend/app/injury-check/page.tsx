@@ -436,7 +436,7 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
 
 function Disclaimer() {
   return (
-    <p className="mt-8 pb-8 text-center text-sm text-stone-500 dark:text-stone-400">
+    <p className="mt-8 pb-8 text-center text-sm text-white">
       This tool does not replace medical advice. If symptoms worsen, seek
       professional care.
     </p>
