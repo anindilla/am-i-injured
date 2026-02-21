@@ -42,16 +42,30 @@ npm run dev
 
 App runs at **http://localhost:3000**. Open **http://localhost:3000/injury-check** to use the flow.
 
-## Deploy on Vercel
+## Deploy live (all free)
 
-The app is a **monorepo**: the Next.js app lives in `frontend/`. To fix 404 on Vercel:
+**You do not need to deploy the Django backend.** The app includes a Next.js API route (`/api/analyze`) that runs the same scoring logic. On Vercel, both the site and the analyze API run in one place—no separate server, no extra cost.
 
-1. Open your project on [Vercel](https://vercel.com) → **Settings** → **General**.
-2. Under **Root Directory**, click **Edit**, set it to **`frontend`**, and save.
-3. (Optional) If you deploy the Django backend elsewhere, add an env var: **`NEXT_PUBLIC_API_URL`** = your API URL.
-4. **Redeploy** (Deployments → ⋮ on latest → Redeploy).
+### 1. Get the frontend live on Vercel (free)
 
-Vercel will then build and serve the Next.js app from `frontend/`.
+1. Go to [vercel.com](https://vercel.com) and sign in (e.g. with GitHub).
+2. Click **Add New…** → **Project** and **import** your repo `anindilla/am-i-injured`.
+3. **Root Directory:** click **Edit**, set to **`frontend`**, then **Continue**.
+4. Leave **Environment Variables** empty (so the app uses the built-in `/api/analyze`).
+5. Click **Deploy**. Wait for the build to finish.
+6. Your app is live at `https://am-i-injured.vercel.app` (or the URL Vercel shows). Open `/injury-check` to use it.
+
+All of this is on Vercel’s free tier (no credit card for hobby use).
+
+### 2. (Optional) Use the Django backend in production
+
+Only do this if you want the Python backend live instead of the Next.js API:
+
+- Deploy the `backend/` folder to a free host, e.g. [Render](https://render.com) (free Web Service) or [Railway](https://railway.app) (free tier). Point the service at `backend/` and run something like `gunicorn config.wsgi`.
+- In Vercel, add an env var: **`NEXT_PUBLIC_API_URL`** = your backend URL (e.g. `https://your-app.onrender.com`).
+- Redeploy the Vercel project so the frontend calls your backend instead of `/api/analyze`.
+
+For most use cases, the built-in API route is enough—no backend setup required.
 
 ## Usage
 
