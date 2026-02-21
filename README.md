@@ -42,6 +42,17 @@ npm run dev
 
 App runs at **http://localhost:3000**. Open **http://localhost:3000/injury-check** to use the flow.
 
+## Deploy on Vercel
+
+The app is a **monorepo**: the Next.js app lives in `frontend/`. To fix 404 on Vercel:
+
+1. Open your project on [Vercel](https://vercel.com) → **Settings** → **General**.
+2. Under **Root Directory**, click **Edit**, set it to **`frontend`**, and save.
+3. (Optional) If you deploy the Django backend elsewhere, add an env var: **`NEXT_PUBLIC_API_URL`** = your API URL.
+4. **Redeploy** (Deployments → ⋮ on latest → Redeploy).
+
+Vercel will then build and serve the Next.js app from `frontend/`.
+
 ## Usage
 
 1. Go to `/injury-check`.
