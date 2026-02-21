@@ -1,0 +1,30 @@
+# Dependencies
+frontend/node_modules/
+backend/venv/
+
+# Build / cache
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Env (keep .env.example if you add one)
+.env
+.env.local
+.env.*.local
+
+# Python
+backend/__pycache__/
+*.py[cod]
+*.pyo
+backend/*.egg-info/
+backend/.eggs/
+backend/db.sqlite3
+
+# IDE / OS
+.DS_Store
+*.pem
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
